@@ -1,0 +1,16 @@
+# 私有基准数据：禁止进入Git及远程仓库。
+/基准数据库/
+# 临时文件、缓存与依赖。
+~$*
+**/node_modules/
+**/__pycache__/
+*.pyc
+*.tmp
+*.sqlite-wal
+*.sqlite-shm
+*.db-wal
+*.db-shm
+.env
+.env.*
+Thumbs.db
+Desktop.ini
