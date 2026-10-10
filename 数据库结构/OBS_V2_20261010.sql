@@ -1,0 +1,13 @@
+CREATE TABLE T01 ("contract_id" TEXT PRIMARY KEY,"contract_name" TEXT,"project_name" TEXT,"building_name" TEXT,"contract_start_date" TEXT,"contract_end_date" TEXT,"payee_name" TEXT,"bank_name" TEXT,"bank_account_number" TEXT,"contract_type" TEXT,"file_received_date" TEXT,"effective_date" TEXT,"expiry_date" TEXT,"building_id" TEXT);
+CREATE TABLE "T01-1" ("contract_number" TEXT,"contract_name" TEXT,"项目名" TEXT,"楼栋名" TEXT,"contract_start_date" TEXT,"contract_end_date" TEXT,"signed_date" TEXT,"effective_date" TEXT,"expiry_date" TEXT,"is_current" INTEGER,"data_status" TEXT,"source_row_id" TEXT,"fee_rule_version" TEXT,"contract_type" TEXT,"payee_name" TEXT,"bank_name" TEXT,"bank_account_ref" TEXT,"contract_profile_source_row_id" TEXT,"bank_account_number" TEXT,"bank_verification_status" TEXT,"contract_start_month_id" TEXT,"contract_end_month_id" TEXT,"new_contract_id" TEXT REFERENCES T01(contract_id));
+CREATE TABLE contract_link(legacy_obs_row INTEGER,new_contract_id TEXT REFERENCES T01(contract_id),original_number TEXT,original_name TEXT,match_rule TEXT,PRIMARY KEY(legacy_obs_row,new_contract_id));
+CREATE TABLE contract_building(contract_id TEXT REFERENCES T01(contract_id),building_id TEXT,source_rule TEXT,PRIMARY KEY(contract_id,building_id));
+CREATE TABLE contract_id_registry(contract_id TEXT PRIMARY KEY REFERENCES T01(contract_id),identity_json TEXT);
+CREATE TABLE new_contract_lineage(contract_id TEXT REFERENCES T01(contract_id),details_json TEXT);
+CREATE TABLE migration_issue(contract_id TEXT REFERENCES T01(contract_id),issue TEXT,reason TEXT,source_details TEXT);
+CREATE TABLE field_description(table_name TEXT,column_order INTEGER,field_name TEXT,description TEXT,PRIMARY KEY(table_name,column_order));
+CREATE TABLE import_batch(version TEXT PRIMARY KEY,source_workbook TEXT,source_sha256 TEXT,record_count INTEGER,scope TEXT);
+CREATE TABLE source_archive(source_file TEXT,source_sheet TEXT,source_row INTEGER,raw_json TEXT,PRIMARY KEY(source_file,source_sheet,source_row));
+CREATE TABLE record_lineage(obs_row INTEGER,source_file TEXT,source_sheet TEXT,source_row INTEGER,role TEXT,details_json TEXT);
+CREATE TABLE change_log(obs_row INTEGER,field_name TEXT,old_json TEXT,new_json TEXT);
+CREATE VIEW "业务_新旧合同关联" AS SELECT n.*,o.rowid+2 AS legacy_obs_row,o.contract_number AS original_number,o.contract_name AS original_name FROM T01 n JOIN "T01-1" o ON o.new_contract_id=n.contract_id;
