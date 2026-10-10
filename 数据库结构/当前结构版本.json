@@ -1,7 +1,7 @@
 {
-  "version": "OBS-V5",
-  "schema_file": "OBS_V5_20261010.sql",
-  "template_file": "OBS库-模板_R7_20261010.xlsx",
-  "data_version": "OBS-R8",
+  "version": "OBS-V6",
+  "schema_file": "OBS_V6_20261010.sql",
+  "template_file": "OBS库-模板_R9_20261010.xlsx",
+  "data_version": "OBS-R9",
   "private_data_pointer": "../数据表/当前版本.json"
 }
