@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinanceQuerySessionState",
+  "type": "object",
+  "required": [
+    "session_id",
+    "user_id",
+    "slots",
+    "constraints",
+    "assumptions",
+    "pending_questions",
+    "confirmed_items",
+    "output_spec",
+    "version",
+    "last_updated",
+    "status"
+  ],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "HTTP由服务端HttpOnly随机cookie派生；不接受请求JSON覆盖"
+    },
+    "slots": {
+      "type": "object",
+      "properties": {
+        "intent": {
+          "enum": [
+            "finance",
+            "contracts",
+            "completeness"
+          ]
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "receipts",
+              "receivable",
+              "payable",
+              "paid",
+              "written_off",
+              "unmatched_documents",
+              "difference",
+              "receipt_difference",
+              "reserve",
+              "adjustment",
+              "water",
+              "electricity"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "start": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{4}(0[1-9]|1[0-2])$"
+        },
+        "end": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{4}(0[1-9]|1[0-2])$"
+        },
+        "fields": {
+          "type": "object"
+        },
+        "scope": {
+          "type": "object",
+          "description": "仅服务端实体索引解析得到，不执行模型提供的SQL或楼栋ID"
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "excluded_metrics": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "receipts",
+              "receivable",
+              "payable",
+              "paid",
+              "written_off",
+              "unmatched_documents",
+              "difference",
+              "receipt_difference",
+              "reserve",
+              "adjustment",
+              "water",
+              "electricity"
+            ]
+          }
+        },
+        "unsupported_filter": {
+          "type": "string"
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pending_questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "slot",
+          "question"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "slot": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "confirmed_items": {
+      "type": "object"
+    },
+    "output_spec": {
+      "type": "object",
+      "required": [
+        "mode",
+        "details",
+        "breakdown"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "summary",
+            "total",
+            "monthly"
+          ]
+        },
+        "details": {
+          "type": "boolean"
+        },
+        "breakdown": {
+          "type": "boolean"
+        }
+      }
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_updated": {
+      "type": "number"
+    },
+    "created_at": {
+      "type": "number"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "awaiting_fields",
+        "awaiting_confirmation",
+        "ready",
+        "answered",
+        "archived"
+      ]
+    },
+    "database_sha256": {
+      "type": "string"
+    },
+    "recent_messages": {
+      "type": "array",
+      "maxItems": 12
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 2400
+    },
+    "tool_refs": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

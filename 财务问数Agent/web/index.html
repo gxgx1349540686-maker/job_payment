@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>财务问数</title><link rel="stylesheet" href="/assets/style.css"><script src="/assets/sse.js" defer></script><script src="/assets/v2.js" defer></script><script src="/assets/plan.js" defer></script></head>
+<body><header class="topbar"><a class="brand" href="/">财务问数<span class="brand-dot"></span></a><div class="header-actions"><details id="feature-menu" class="feature-menu"><summary>＋ 功能</summary><div class="feature-popover"><p class="feature-title">财务工作</p><button id="plan-feature" type="button"><span>制定计划</span><small>本地核对</small></button><button type="button" data-question="为【项目名】【楼栋名】生成尾期对账单"><span>尾期对账单</span><small>已接入</small></button><button id="monthly-feature" type="button" aria-describedby="monthly-feature-note"><span>月度账单</span><small class="pending-badge">待接入</small></button><p id="monthly-feature-note" class="feature-note" hidden>月度账单工作流尚未接入，暂不能生成文件。现在可以直接查询每月费用。</p></div></details><button id="new-chat" type="button" class="new-chat" aria-label="开始新对话">＋ 新对话</button></div></header>
+<main class="workspace"><section id="welcome" class="welcome"><div class="welcome-mark" aria-hidden="true">✳</div><h1>你想了解什么？</h1><div class="suggestions"><button id="plan-suggestion" type="button">制定计划 <span>↗</span></button><button type="button" data-question="查询【项目＋楼栋】的执行合同">查合同 <span>↗</span></button><button type="button" data-question="【项目＋楼栋】2026年3月应付多少？">查费用 <span>↗</span></button><button type="button" data-question="实付单据【填写单据号】已付多少，与当月应付差多少？">查实付 <span>↗</span></button></div></section>
+<section id="plan-panel" class="plan-panel" hidden aria-label="制定计划">
+<h2>制定计划</h2><p>核对尾期支付资料，生成待复核记录。支付月份用于说明；结算核对月份用于查历史计划，两者分别填写。</p>
+<form id="plan-form"><label>筛选楼栋<input id="plan-search" type="search" maxlength="150" placeholder="输入项目或楼栋名称"></label>
+<label>楼栋<select id="plan-building" required></select></label>
+<label>支付月份<input id="plan-payment-month" type="month" required></label>
+<label>结算核对月份<input id="plan-settlement-month" type="month" required></label>
+<label>已人工选定的合同ID（可选）<input id="plan-contract" maxlength="100" placeholder="首次可留空，先查看候选"></label>
+<p>当前支持尾期。金额、附件与执行合同采用尚未确认时保留待复核。</p>
+<button id="plan-submit" type="submit">开始核对</button><button id="plan-close" type="button">收起</button></form>
+<p id="plan-message" role="status"></p><div id="plan-result" aria-live="polite"></div>
+</section><section id="messages" class="messages" aria-live="polite" aria-label="聊天记录"></section></main>
+<div class="composer-dock"><form id="composer" class="composer"><label class="sr-only" for="question">输入你的问题</label><textarea id="question" rows="1" placeholder="自由输入，例如：新南公社14栋3月应付多少？" maxlength="2000"></textarea><div class="compose-bottom"><span id="status" role="status">正在连接…</span><button id="send" type="submit" aria-label="发送问题">↑</button></div></form><p class="footnote">可自由补充或修正，例如“改查4月”“只看合计”；财务依据可展开核对</p></div>
+</body></html>

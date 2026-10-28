@@ -1,0 +1,11 @@
+{
+  "project_root": "E:/codex/job_payment",
+  "database_file": "E:\\codex\\job_payment\\数据表\\测试完成状态登记_R46_20261026\\job_payment_OBS_V39_测试完成状态登记R46_20261026.sqlite",
+  "validation_file": "E:\\codex\\job_payment\\数据表\\测试完成状态登记_R46_20261026\\正式发布验收_R46.json",
+  "api_key_file": "secrets/deepseek_key.txt",
+  "base_url": "https://api.deepseek.com",
+  "model": "deepseek-flash",
+  "business_year": 2026,
+  "query_timeout_seconds": 8,
+  "max_result_rows": 200
+}

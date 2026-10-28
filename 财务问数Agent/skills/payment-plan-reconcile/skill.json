@@ -1,0 +1,9 @@
+{
+  "name": "payment-plan-reconcile",
+  "version": "0.3.1",
+  "handler": "local_plan_check_v1",
+  "tools": ["list_plans", "get_contract_candidates", "get_failed_documents", "build_review_packet"],
+  "rules": {
+    "tail_description": "{project}_{building}_{payee}_{contract_type}_{payment_month}月(尾期)结算收益"
+  }
+}

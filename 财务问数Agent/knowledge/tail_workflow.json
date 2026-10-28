@@ -1,0 +1,20 @@
+{
+  "id": "tail-final-20260918.1",
+  "workflow_version": "2026-09-18.1",
+  "entrypoint": "对账单最终工作流.py",
+  "bundle": "workflows/tail_statement/v20260918_1",
+  "source_root": "E:\\Trae_Learning\\project5MCP\\对账\\出账流程\\出账流程",
+  "source_kind": "原Excel工作流资料；R36仅用于对象识别",
+  "timeout_seconds": 240,
+  "files_sha256": {
+    "对账单最终工作流.py": "924c31fe1a244591414198ae2f049b1110f7f5d82d1d5154edca37317cf42897",
+    "水电Excel接入.py": "691fb641649fd81cd81adc25208d4b4f98d8ac27dce32ce10afc01691d6a5ae7",
+    "水电板块工作流.py": "3473093860bf5cabc39761e6a9a1377f238f883d9cbee87e0359b28b2240ff10",
+    "租金Excel接入.py": "90f324663e91597b6f3db29e74a40f88b88387a19f16e2f99e950fa607c0959e",
+    "租金板块工作流.py": "f37c59fba398f929d7d13d0c66f921bd0e2b4f67c4925424d5fc0f4324cd6ada",
+    "汇总表计算.py": "dd2cf62c62bd0eb5fc1c305b8540e9de39e364c2762d6ca441bd3bc42db2e004",
+    "boyu_agent/vouchers.py": "5f617dee6ff813ff8e7787cd27293c65748d49e50a39b24fbe4b571552a7a588"
+  },
+  "evidence": "README.md 实际调用关系及已有出账入口；对账单最终工作流.WORKFLOW_VERSION",
+  "api_calls": 0
+}

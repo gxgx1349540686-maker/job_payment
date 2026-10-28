@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+runtime/
+config.local.json
+secrets/
+*.log
+.env
+.env.*
+*.key
+deepseek_key.txt
+api_key.txt
+apikey.txt

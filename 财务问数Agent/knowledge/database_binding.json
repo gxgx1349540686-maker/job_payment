@@ -1,0 +1,16 @@
+{
+  "query_label": "OBS-V39 / R46 / T09-T10 V12",
+  "database_version": "OBS-V39",
+  "database_file": "E:\\codex\\job_payment\\数据表\\测试完成状态登记_R46_20261026\\job_payment_OBS_V39_测试完成状态登记R46_20261026.sqlite",
+  "validation_file": "E:\\codex\\job_payment\\数据表\\测试完成状态登记_R46_20261026\\正式发布验收_R46.json",
+  "database_sha256": "282ab99c5f1c4936e0d48a338cdda07b9d3faa36a33939f206da0e5da5cdac78",
+  "excel_release": "Excel-R46",
+  "core_workbook_version": "OBS-R41",
+  "data_version": "OBS-R46",
+  "t09_revision": "V12",
+  "t10_revision": "V12",
+  "financial_rules_version": "OBS-FINANCE-R41-EXIT-SWITCH",
+  "payment_basis": "T09楼栋月度实付汇总；T10有效核销；单据端余额单列",
+  "approved_on": "2026-10-26",
+  "qa_rule_version": "BUILDING-TEST-STATE-V1"
+}
